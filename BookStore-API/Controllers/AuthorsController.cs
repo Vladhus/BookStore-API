@@ -102,7 +102,7 @@ namespace BookStore_API.Controllers
         /// <param name="author"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize(Roles = "Administrator, Customer")]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

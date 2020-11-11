@@ -1,0 +1,110 @@
+﻿@page "/authors/delete/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inject IAuthorRepositorycs _repo
+@inject NavigationManager _navMAnager
+
+
+<h3 class="card-title">Are you sure you want to delete this record?</h3>
+<br />
+<hr />
+<br />
+@if (isFailed)
+{
+    <ErrorMessage Message="Something went wrong with the operation" />
+
+}
+
+@if (Model == null)
+{
+    <LoadingMesssage Message="Loading Author Details" />
+}
+else
+{
+    <div class="col-md-4">
+        <h4>Author Details</h4>
+        <table class="table table-responsive">
+            <tr>
+                <td>First Name</td>
+                <td>@Model.FirstName</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Model.LastName</td>
+            </tr>
+            <tr>
+                <td>Biography</td>
+                <td>@Model.Bio</td>
+            </tr>
+        </table>
+        <br />
+
+        @if (Model.Books == null || Model.Books.Count < 1)
+        {
+            <div class="alert alert-dismissible alert-secondary">
+                No boooks for this author
+            </div>
+
+        }
+        else
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    <h4>Author`s Books</h4>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var book in Model.Books)
+                    {
+                        <li class="list-group-item">@book.Title - @book.Price </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+}
+<br />
+
+<button @onclick="DeleteAuthor" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Delete Author
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Back To List
+</button>
+
+
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private Author Model = new Author();
+
+    private bool isFailed = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        int id = Convert.ToInt32(Id);
+        Model = await _repo.Get(Endpoints.AuthorsEndpoint, id);
+    }
+
+    private async Task DeleteAuthor()
+    {
+        bool isSuccess = await _repo.Delete(Endpoints.AuthorsEndpoint, Model.Id);
+        if (isSuccess)
+        {
+            BackToList();
+        }
+        else
+        {
+            isFailed = true;
+        }
+    }
+
+    private void BackToList()
+    {
+        _navMAnager.NavigateTo("/authors/");
+    }
+}

@@ -40,6 +40,7 @@ namespace Book_Store_UI
             services.AddScoped<AuthenticationStateProvider>(p => p.GetRequiredService<ApiAuthenticationStateProvider>());
             services.AddScoped<JwtSecurityTokenHandler>();
             services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddTransient<IAuthorRepositorycs, AuthorRepositorycs>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

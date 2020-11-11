@@ -2,7 +2,7 @@
 using Book_Store_UI.Contracts;
 using Book_Store_UI.Providers;
 using Book_Store_UI.Static;
-using Book_Store_UI.ViewModels;
+using Book_Store_UI.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +14,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Book_Store_UI.Service
 {

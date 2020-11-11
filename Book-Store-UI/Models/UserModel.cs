@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Book_Store_UI.ViewModels
+namespace Book_Store_UI.Models
 {
     public class RegistrationModel
     {

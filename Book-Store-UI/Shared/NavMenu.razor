@@ -19,7 +19,24 @@
                         <span class="oi oi-arrow-circle-left" aria-hidden="true"></span> Log Out
                     </NavLink>
                 </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="authors/">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Authors
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="books">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Books
+                    </NavLink>
+                </li>
             </Authorized>
+
             <NotAuthorized>
                 <li class="nav-item px-3">
                     <NavLink class="nav-link" href="login">
@@ -33,22 +50,6 @@
                 </li>
             </NotAuthorized>
         </AuthorizeView>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="authors">
-                <span class="oi oi-plus" aria-hidden="true"></span> Authors
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="books">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Books
-            </NavLink>
-        </li>
     </ul>
 </div>
 

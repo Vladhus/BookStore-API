@@ -16,12 +16,12 @@ namespace BookStore_API.Data
         }
         private async static Task SeedUsers(UserManager<IdentityUser> userManager)
         {
-            if (await userManager.FindByEmailAsync("admin@bookstore.com") == null)
+            if (await userManager.FindByEmailAsync("admin@localhost.com") == null)
             {
                 var user = new IdentityUser
                 {
                     UserName = "admin",
-                    Email = "admin@bookstore.com"
+                    Email = "admin@localhost.com"
                 };
                 var result = await userManager.CreateAsync(user, "P@ssword1");
                 if (result.Succeeded)
